@@ -5,7 +5,7 @@
   <div>
     <Header />
     <main>
-      <slot></slot>
+      <slot />
     </main>
   </div>
   
