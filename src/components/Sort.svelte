@@ -1,10 +1,10 @@
 <script>
-    // import { sorting, setSorting, sortProducts } from '../store/productStore';
+    import { sorting, setSorting, sortProducts } from '../store/productStore';
     
-    // const handleSort = (event) => {
-    //   setSorting(event.target.value);
-    //   sortProducts();
-    // };
+    const handleSort = (event) => {
+      setSorting(event.target.value);
+      sortProducts();
+    };
   </script>
   
   <div class="flex sm:w-[95%] max-w-[21rem] md:w-full">
