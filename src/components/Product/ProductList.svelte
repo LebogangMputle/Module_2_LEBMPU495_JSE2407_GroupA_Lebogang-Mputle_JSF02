@@ -1,10 +1,11 @@
 <script>
-    import ProductCard from './ProductCard.svelte';
-    import CardSkeleton from './CardSkeleton.svelte';
-    import { products, loading, error } from '../../store/productStore';
-    import Error from '../Error.svelte';
+    // import ProductCard from './ProductCard.svelte';
+    // import CardSkeleton from './CardSkeleton.svelte';
+    // import { products, loading, error } from '../../store/productStore';
+    // import Error from '../Error.svelte';
   </script>
   
+  <div>
   {#if loading && !error}
     <div class="grid justify-center">
       <div class="lg:max-h-[130rem] max-w-xl mx-auto grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-2 items-center lg:max-w-none my-4">
@@ -26,7 +27,7 @@
       </div>
     </div>
   {/if}
-  </script>
+  </div>
   
   <style>
     /* Add any additional styles if needed */

@@ -1,11 +1,11 @@
 <script>
     import { onMount } from 'svelte';
-    import Error from './Error.svelte';
-    import { getCategories } from '../api/api';
+    // import Error from './Error.svelte';
+    // import { getCategories } from '../api/api';
   
     // Simulating the useProductStore hook with Svelte stores
     import { writable } from 'svelte/store';
-    import { fetchProducts, searchProducts, filterItem, setFilterItem, searchTerm, setSearchTerm } from '../store/productStore';
+    // import { fetchProducts, searchProducts, filterItem, setFilterItem, searchTerm, setSearchTerm } from '../store/productStore';
   
     let categories = [];
     let error = null;
