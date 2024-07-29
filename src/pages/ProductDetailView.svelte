@@ -1,11 +1,9 @@
 <script>
     import { onMount } from 'svelte';
-    import { get } from 'svelte/store';
     import ProductDetail from '../components/product/ProductDetail.svelte';
     import ProductSkeleton from '../components/product/ProductSkeleton.svelte';
     import Error from '../components/Error.svelte';
     import { fetchSingleProduct } from '../api/api.js';
-    import { productStore } from '../store/productStore'; // Adjust the path as needed
   
     let product = {};
     let error = null;
@@ -17,19 +15,20 @@
     // Load data when component mounts
     onMount(async () => {
       loading = true;
-      const { response, error: fetchError } = await fetchSingleProduct(id);
-      if (fetchError) {
-        error = fetchError;
-      } else {
+      try {
+        const response = await fetchSingleProduct(id);
         product = response;
+      } catch (fetchError) {
+        error = fetchError;
+      } finally {
+        loading = false;
       }
-      loading = false;
     });
   </script>
   
   {#if error}
     <div class="flex justify-center">
-      <Error {...error} />
+      <Error message={error.message} /> <!-- Adjust if needed based on Error component -->
     </div>
   {:else if loading}
     <div class="flex justify-center">

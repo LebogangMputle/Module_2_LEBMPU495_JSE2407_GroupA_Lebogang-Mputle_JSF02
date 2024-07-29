@@ -1,12 +1,33 @@
 <script>
-    import Filter from '../components/Filter.svelte';
-    import Sort from '../components/Sort.svelte';
-    import ProductList from '../components/product/ProductList.svelte';
-  </script>
-  
-  <div class="grid lg:flex gap-y-4 gap-x-48 lg:items-start mt-3 mx-auto justify-center">
-    <Filter />
-    <Sort />
+  import { onMount } from 'svelte';
+  import { productStore, fetchProducts } from '../store/productStore';
+
+  let products = [];
+
+  // Fetch products when the component is mounted
+  onMount(async () => {
+    await fetchProducts();
+  });
+
+  // Subscribe to the productStore
+  $: products = $productStore;
+</script>
+
+<template>
+  <div>
+    <h1>Products</h1>
+    {#if products.length > 0}
+      <ul>
+        {#each products as product}
+          <li>{product.title}</li>
+        {/each}
+      </ul>
+    {:else}
+      <p>No products available.</p>
+    {/if}
   </div>
-  <ProductList />
-  
+</template>
+
+<style>
+  /* Your CSS styles here */
+</style>
