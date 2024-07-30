@@ -1,9 +1,9 @@
 <script>
-    export let id;
+    export let image;
     export let title;
     export let price;
     export let description;
-    export let image;
+    export let product;
   </script>
   
   <template>
@@ -11,11 +11,31 @@
       <img src={image} alt={title} />
       <h2>{title}</h2>
       <p>{description}</p>
-      <p>{price}</p>
+      <p>${price}</p>
     </div>
-  </template>
+
+    <div>
+        <h2>{product.name}</h2>
+        <p>{product.description}</p>
+        <!-- Add other product details as needed -->
+      </div>
+
+    {#each products as product}
+        <ProductCard {product} />
+    {/each}
+
   
-  <style>
-    /* Add your styles here if needed */
-  </style>
+    <style>
+      .product-card {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        border-radius: 5px;
+        text-align: center;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </template>
   
